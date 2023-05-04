@@ -1,4 +1,4 @@
-#exercise 1
+#exercise 1  calculator
 while True:
     print('Welcome in the calculator app!')
     print('What calculation would you like to perform? Select number:')
@@ -57,7 +57,7 @@ while True:
             print('Error: Only numbers. Remember it is not allowed to define powers in terms of measurable numbers for negative numbers. ')
 
 
-#exercise 2
+#exercise 2 list generator
 import random
 print('\n')
 a= input('What should be the minimum value for the list? ')
@@ -78,7 +78,7 @@ print('Changed was the element that is located under the index no. ', list1.inde
 
 print('\n')
 
-#exercise 3
+#exercise 3 shopping list 
 
 Plik = open('ShoppingList.txt', 'w')
 Plik.write('Shopping list: ')
