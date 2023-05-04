@@ -1,18 +1,20 @@
 #exercise 1
-print('witaj w naszym kalkulatorzę')
 while True:
-    x = (input('podaj pierwszą liczbę: '))
-    y = (input('podaj drugą liczbę: '))
+    print('Welcome in the calculator app!')
+    print('What calculation would you like to perform? Select number:')
+    print(' 1 /\n 2 *\n 3 +\n 4 -\n 5 **\n 6 Exit.')
 
+    option = int(input('Calculation number: '))  
+
+    if option == 6:
+        break
+
+    x = (input('First nuber: '))
+    y = (input('Second number: '))
 
     if x == '' or y == '':
         continue
 
-    print('Jakie działanie chcesz wykonać wybierz odpowiedni numer')
-    print(' 1 /\n 2 *\n 3 +\n 4 -\n 5 **\n 6 Wyjscie z programu.')
-
-
-    option = int(input())    # tu też warto coś zrobić  z if i or i złamać program
     x = float(x)
     y = float(y)
 
@@ -21,16 +23,16 @@ while True:
         try:
             print(x/y)
         except ValueError:
-            print('Tylko liczby!')
+            print('Only numbers!')
         except ZeroDivisionError:
-            print('Przez zero serio!!!!!!!!!!!')
+            print('You can t divide by zero!')
 
     elif option == 2:
 
         try:
             print(x*y)
         except ValueError:
-            print('Tylko liczby!')
+            print('Only numbers!')
 
 
     elif option == 3:
@@ -38,32 +40,28 @@ while True:
 
             print(x + y)
         except ValueError:
-            print('Tylko liczby!')
+            print('Only numbers!')
 
     elif option == 4:
         try:
 
             print(x - y)
         except ValueError:
-            print('Tylko liczby!')
+            print('Only numbers!')
 
     elif option == 5:
         try:
 
             print(x**y)
         except ValueError:
-            print('Blad: Tylko liczby. Pamietaj nie wolno definiowac potegi w zakresie liczb wymiernych dla liczb ujemnych. ')
-
-    elif option == 6:
-        break
-
+            print('Error: Only numbers. Remember it is not allowed to define powers in terms of measurable numbers for negative numbers. ')
 
 
 #exercise 2
 import random
 print('\n')
-a= input('Jaka ma byc wartosc minimalna dla listy? ')
-b = input('Jaka ma byc wartosc maksymalna dla listy? ')
+a= input('What should be the minimum value for the list? ')
+b = input('What should be the maximum value for the list? ')
 a = int(a)
 b = int(b)
 list1 = list(range(a,b))
@@ -76,29 +74,29 @@ indeks = list2.index(losowy)
 NewIndeks = list2[indeks] * 1000
 list2[indeks] = NewIndeks
 print(list2)
-print('Zmieniony zostal element, ktory znajduje sie pod indexem nr', list1.index(int(NewIndeks/1000)))
+print('Changed was the element that is located under the index no. ', list1.index(int(NewIndeks/1000)))
 
 print('\n')
 
 #exercise 3
 
-Plik = open('ListaZakupow.txt', 'w')
-Plik.write('Lista zakupow: ')
+Plik = open('ShoppingList.txt', 'w')
+Plik.write('Shopping list: ')
 Plik.close()
 variable = ' '
 def option1(variable):
-    print("Wybrales opcje dodania produktu do listy zakupów.\n")
+    print('You have chosen the option to add the product to your shopping list.\n')
 
     while variable == '1':
-        file = open('ListaZakupow.txt', 'a')
+        file = open('ShoppingList.txt', 'a')
         lista = []
-        product = input('Wpisz produkt: ')
+        product = input('Add product: ')
         lista.append(product)
         for i in lista:
             file.write('\n')
             file.write(i)
 
-        what_next = input('Czy chcesz dodac kolejny produkt? t/n?')
+        what_next = input('Would you like to add another product? /n?')
         if what_next == 't':
             variable = '1'
             continue
@@ -106,23 +104,23 @@ def option1(variable):
             break
             variable = ' '
         else:
-            print(f'Podana wartosc {what_next} jest nieprawidłowa. Zostajesz przeniesiony do menu.')
+            print(f'The specified value {what_next} is invalid. You are taken to the menu.')
             break
             variable = ' '
         file.close()
 
 def option2(variable):
-    print("Wybrales opcje usowania produktów z listy.\n")
+    print("You have chosen the option to delete products from the list.\n")
 
     while variable == '2':
-        file = open('ListaZakupow.txt', 'r')
+        file = open('ShoppingList.txt', 'r')
         lista = []
         for i in file.readlines():
             lista.append(i)
         file.close()
 
-        delete = input('Wybierz jaki produkt chcesz usunac: ')
-        file = open('ListaZakupow.txt', 'w')
+        delete = input('Select which product you want to remove: ')
+        file = open('ShoppingList.txt', 'w')
         value = list(map(lambda x: x.rstrip('\n'), lista))
         value.remove(delete)
 
@@ -131,7 +129,7 @@ def option2(variable):
             file.write('\n')
         file.close()
 
-        what_next = input('Czy chcesz usunąć jeszcze jakiś produkt z listy zakupów? t/n?')
+        what_next = input('Do you want to remove any more products from your shopping list? t/n?')
         if what_next == 't':
             variable = '2'
             continue
@@ -139,21 +137,21 @@ def option2(variable):
             variable == ' '
             break
         else:
-            print(f'Podana wartosc {what_next} jest nieprawidłowa. Zostajesz przeniesiony do menu.')
+            print(f'The specified value {what_next} is invalid. You are taken to the menu.')
             break
             variable = ''
 
 
 def option3(variable):
-    print("Wybrales opcje pokazania listy zakupów.\n")
+    print("You chose the option to show a shopping list.\n")
     while variable == '3':
-        line = open('ListaZakupow.txt')
+        line = open('ShoppingList.txt')
         for i in line.readlines():
             print(i)
         line.close()
         print('\n')
 
-        what_next = input('Czy chcesz powrocic do menu? t/n?')
+        what_next = input('Do you want to return to the menu? t/n?')
         if what_next == 't':
             variable = ' '
             break
@@ -161,17 +159,17 @@ def option3(variable):
             variable == '3'
             continue
         else:
-            print(f'Podana wartosc {what_next} jest nieprawidłowa. Zostajesz przeniesiony do menu.')
+            print(f'The specified value {what_next} is invalid. You are taken to the menu.')
             break
             variable = ''
 
 def option4(variable):
     while variable == '4':
-        print("Wybrales opcje czyszczenia listy! \n")
-        file = open('ListaZakupow.txt', 'w' )
-        file.write('Lista zakupów: ')
+        print("You have chosen the option to clear the list! \n")
+        file = open('ShoppingList.txt', 'w' )
+        file.write('Shopping list: ')
         file.close()
-        what_next = input('Lista zostala wyczyszczona czy chcesz powrocic do menu? t/n?')
+        what_next = input('The list has been cleared or you want to return to the menu? t/n?')
         if what_next == 't':
             variable = ' '
             break
@@ -179,17 +177,17 @@ def option4(variable):
             variable == '3'
             continue
         else:
-            print(f'Podana wartosc {what_next} jest nieprawidłowa. Zostajesz przeniesiony do menu.')
+            print(f'The specified value {what_next} is invalid. You are taken to the menu.')
             break
             variable = ''
 
 
-while variable != 'Stop':
-    print('Witaj w programie lista zakupow! \n')
+while variable.lower() != 'stop':
+    print('Welcome to the shopping list program! \n')
     print('========== Menu ==========')
-    print('1. Dodaj produkt do kupienia.\n2. Usun produkt.\n3. Wyswietl liste zakupow.\n4. Wyczysc liste zakupow.')
-    print('Jeśli chcesz wyjsc z programu wpisz "Stop"')
-    variable = input(f'Wybierz opcję i naciśnij ENTER: ')
+    print('1. Add a product to buy.\n2. Delete product.\n3. Display the shopping list.\n4. Clear the shopping list.')
+    print('If you want to exit the program type "Stop"')
+    variable = input(f'Select an option and press ENTER: ')
     if variable == '1':
         print()
         option1('1')
@@ -202,6 +200,9 @@ while variable != 'Stop':
     if variable == '4':
         print()
         option4('4')
+    if variable.lower() == 'stop':
+        print('Thank you!')
+        break
     if variable not in ['1', '2', '3', '4']:
-        print('BLAD')
+        print('Error')
         continue
